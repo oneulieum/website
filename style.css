@@ -59,7 +59,7 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
 .btn-contact {
-  background: var(--orange); color: #fff !important; padding: 13px 34px; border-radius: 999px;
+  background: var(--orange); color: #fff !important; padding: 13px 44px; border-radius: 999px;
   font-size: 0.95rem; font-weight: 700; transition: all 0.25s;
 }
 .btn-contact:hover { background: var(--orange-dark); transform: translateY(-1px); }
