@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인사이트 | 오늘이음 주식회사</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A2540'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F37021'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">오늘이음<span class="dot">.</span><small>ONEULIEUM Inc.</small></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">홈</a></li>
+      <li><a href="about.html">회사소개</a></li>
+      <li><a href="history.html">연혁</a></li>
+      <li><a href="clients.html">거래처</a></li>
+      <li><a href="blog.html" class="active">인사이트</a></li>
+      <li><a href="contact.html" class="btn-contact">사업 문의</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="메뉴">☰</button>
+  </div>
+</nav>
+
+<header class="page-hero grid-motif">
+  <div class="container">
+    <span class="eyebrow">INSIGHT</span>
+    <h1>오늘이음 인사이트</h1>
+    <p>공공구매 동향, 사회적경제 이슈, 교육·행사 소식을 전합니다.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="filter-bar">
+      <button class="on" data-filter="all">전체</button>
+      <button data-filter="trend">공공구매 동향</button>
+      <button data-filter="se">사회적경제</button>
+      <button data-filter="edu">교육·행사</button>
+    </div>
+
+    <div class="grid-3" id="post-grid">
+      <p style="color:var(--gray)">게시글을 불러오는 중입니다…</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">오늘이음<span class="dot">.</span><small>ONEULIEUM Inc.</small></div>
+        <div class="info">오늘이음 주식회사 · 데이터 기반 공공시장 컨설팅<br>Email. admin@ieum.kr</div>
+      </div>
+      <div class="links">
+        <a href="about.html">회사소개</a>
+        <a href="history.html">연혁</a>
+        <a href="clients.html">거래처</a>
+        <a href="blog.html">인사이트</a>
+        <a href="contact.html">사업 문의</a>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 ONEULIEUM Inc. All rights reserved.</span><span>oneulieum.com</span></div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script src="posts/posts.js"></script>
+<script>
+const CAT_LABEL = { trend: '공공구매 동향', se: '사회적경제', edu: '교육·행사' };
+const fmtDate = (d) => d.replaceAll('-', '. ');
+
+function card(p) {
+  const themeCls = p.theme === 'alt' ? ' alt' : p.theme === 'navy' ? ' navy" style="color:#fff' : '';
+  return '<a href="post.html?id=' + encodeURIComponent(p.id) + '" class="card post-card" data-cat="' + p.category + '">' +
+    '<div class="post-thumb' + themeCls + '">' + (p.emoji || '📄') + '</div>' +
+    '<div class="post-body">' +
+    '<span class="cat">' + (CAT_LABEL[p.category] || p.category) + '</span>' +
+    '<h3>' + p.title + '</h3>' +
+    '<p>' + (p.summary || '') + '</p>' +
+    '<span class="date">' + fmtDate(p.date) + '</span>' +
+    '</div></a>';
+}
+
+(() => {
+  const grid = document.getElementById('post-grid');
+  const posts = ((window.POSTS_DATA && window.POSTS_DATA.posts) || [])
+    .slice().sort((a, b) => b.date.localeCompare(a.date));
+  grid.innerHTML = posts.length ? posts.map(card).join('')
+    : '<p style="color:var(--gray)">등록된 게시글이 없습니다.</p>';
+  document.querySelectorAll('.filter-bar button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-bar button').forEach((b) => b.classList.remove('on'));
+      btn.classList.add('on');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('#post-grid .post-card').forEach((card) => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

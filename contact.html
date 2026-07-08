@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사업 문의 | 오늘이음 주식회사</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A2540'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F37021'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .field .desc { font-size: 0.82rem; color: var(--gray); margin: -4px 0 8px; }
+  .success-box { display: none; text-align: center; padding: 60px 20px; }
+  .success-box .mark {
+    width: 72px; height: 72px; border-radius: 50%; background: var(--blue-light);
+    display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 24px;
+  }
+  .success-box h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 900; color: var(--navy-2); margin-bottom: 12px; }
+  .success-box p { color: var(--gray); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">오늘이음<span class="dot">.</span><small>ONEULIEUM Inc.</small></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">홈</a></li>
+      <li><a href="about.html">회사소개</a></li>
+      <li><a href="history.html">연혁</a></li>
+      <li><a href="clients.html">거래처</a></li>
+      <li><a href="blog.html">인사이트</a></li>
+      <li><a href="contact.html" class="btn-contact">사업 문의</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="메뉴">☰</button>
+  </div>
+</nav>
+
+<header class="page-hero grid-motif">
+  <div class="container">
+    <span class="eyebrow">CONTACT</span>
+    <h1>사업 문의</h1>
+    <p>컨설팅, 연구용역, 강의·교육 관련 문의를 남겨주시면 영업일 기준 1~2일 내 회신드립니다.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>이런 문의를 환영합니다</h3>
+        <p>지자체·공공기관의 연구용역 및 컨설팅 발주, 사회적경제기업 대상 교육 프로그램 운영, 공공구매 데이터 분석 협력 등 공공시장과 관련한 모든 협업 제안을 기다립니다.</p>
+        <div class="item"><span class="ico">✉️</span> admin@ieum.kr</div>
+        <div class="item"><span class="ico">💼</span> 컨설팅 · 연구용역 · 강의 · 코칭</div>
+        <div class="item"><span class="ico">⏱️</span> 영업일 기준 1~2일 내 회신</div>
+      </div>
+      <div class="form-card reveal">
+        <!-- 제출 데이터는 구글폼 응답으로 저장됩니다 -->
+        <form id="inquiry-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScwgnDNVDiq4Nei_pgMjXkfMbIG9B3jcyZD1jSeRqoYajHyYw/formResponse"
+          method="POST" target="gform-sink">
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">성함 *</label>
+              <input id="f-name" name="entry.370228893" required placeholder="회신받으실 담당자 성함">
+            </div>
+            <div class="field">
+              <label for="f-org">소속 기관</label>
+              <input id="f-org" name="entry.33721403" placeholder="예: ○○시청, ○○사회적경제지원센터">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-email">이메일 *</label>
+              <input id="f-email" name="entry.367852832" type="email" required placeholder="회신받으실 이메일 주소">
+            </div>
+            <div class="field">
+              <label for="f-type">문의 유형</label>
+              <select id="f-type">
+                <option value="컨설팅">컨설팅</option>
+                <option value="연구ㆍ용역">연구·용역</option>
+                <option value="강의ㆍ교육">강의·교육</option>
+                <option value="__other__">기타</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">문의 내용 *</label>
+            <p class="desc">추진 배경, 교육·컨설팅 대상, 희망 시기와 기간, 예상 규모(예산·인원)를 함께 적어주시면 더 정확하게 회신드릴 수 있습니다.</p>
+            <textarea id="f-msg" name="entry.481117570" required placeholder="문의하실 내용을 자유롭게 적어주세요."></textarea>
+          </div>
+          <input type="hidden" id="type-value" name="entry.386159031">
+          <input type="hidden" id="type-other" name="entry.386159031.other_option_response" disabled>
+          <button type="submit" class="btn btn-primary" id="submit-btn">문의 보내기</button>
+          <p class="form-note">제출하신 내용은 안전하게 접수되며, 문의 목적 외에 사용되지 않습니다.</p>
+        </form>
+        <div class="success-box" id="success">
+          <div class="mark">✅</div>
+          <h3>문의가 접수되었습니다</h3>
+          <p>남겨주신 이메일로 영업일 기준 1~2일 내 회신드리겠습니다.<br>급한 건은 admin@ieum.kr로 직접 연락 주세요.</p>
+        </div>
+        <iframe name="gform-sink" id="gform-sink" style="display:none"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">오늘이음<span class="dot">.</span><small>ONEULIEUM Inc.</small></div>
+        <div class="info">오늘이음 주식회사 · 데이터 기반 공공시장 컨설팅<br>Email. admin@ieum.kr</div>
+      </div>
+      <div class="links">
+        <a href="about.html">회사소개</a>
+        <a href="history.html">연혁</a>
+        <a href="clients.html">거래처</a>
+        <a href="blog.html">인사이트</a>
+        <a href="contact.html">사업 문의</a>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 ONEULIEUM Inc. All rights reserved.</span><span>oneulieum.com</span></div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+const form = document.getElementById('inquiry-form');
+let submitted = false;
+
+form.addEventListener('submit', () => {
+  // 문의 유형 값 채우기 (구글폼 객관식과 정확히 일치해야 함)
+  const sel = document.getElementById('f-type').value;
+  const typeValue = document.getElementById('type-value');
+  const typeOther = document.getElementById('type-other');
+  if (sel === '__other__') {
+    typeValue.value = '__other_option__';
+    typeOther.disabled = false;
+    typeOther.value = '기타';
+  } else {
+    typeValue.value = sel;
+    typeOther.disabled = true;
+  }
+  submitted = true;
+  document.getElementById('submit-btn').disabled = true;
+});
+
+document.getElementById('gform-sink').addEventListener('load', () => {
+  if (!submitted) return;
+  form.style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+});
+</script>
+</body>
+</html>
