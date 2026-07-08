@@ -89,7 +89,7 @@
       <div class="field"><label>카테고리</label>
         <select id="f-cat">
           <option value="trend">공공구매 동향</option>
-          <option value="se">사회적경제</option>
+          <option value="se">사회연대경제</option>
           <option value="edu">교육·행사</option>
         </select>
       </div>
@@ -160,7 +160,7 @@ async function loadPosts() {
 
 function renderList() {
   const posts = cache.posts.slice().sort((a, b) => b.date.localeCompare(a.date));
-  const CAT = { trend: '공공구매 동향', se: '사회적경제', edu: '교육·행사' };
+  const CAT = { trend: '공공구매 동향', se: '사회연대경제', edu: '교육·행사' };
   $('post-list').innerHTML = posts.length ? posts.map((p) =>
     '<div class="post-row"><div><div class="t">' + p.title + '</div>' +
     '<div class="d">' + p.date + ' · ' + (CAT[p.category] || p.category) + '</div></div>' +
